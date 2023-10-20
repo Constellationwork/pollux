@@ -1,0 +1,7 @@
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+# This file tells about "CODEOWNER"
+
+# These owners will be the default owners for everything in the repo.
+# @global-owner1 and @global-owner2 will be requested for review when someone opens a pull request.
+*   @global-veeramaaganti
