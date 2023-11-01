@@ -13,11 +13,11 @@ jobs:
     steps:
       - name: hello world
         run: echo "hi anji"
-        shell:bash
+        shell: bash
 
   goodbye:
     runs-on: ubuntu-latest
     steps:
       - name: hi rajat and pradip
         run: echo "hi rajat and pradip"
-        shell:bash
+        shell: bash
