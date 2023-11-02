@@ -12,6 +12,10 @@ jobs:
         python-version-file:  # Optional, specify if you have a version file
         # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
         cache: pip  # Example: 'pip'
+        - name: Install Dependencies
+  run: |
+    cd /path/to/your/project
+    pip install -r requirements.txt
         # The target architecture (x86, x64) of the Python or PyPy interpreter.
         architecture: x64  # Example: 'x64'
         # Set this option if you want the action to check for the latest available version that satisfies the version spec.
