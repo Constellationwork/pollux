@@ -1,0 +1,31 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9  # You can specify your desired Python version
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        # Or you can use pipenv, poetry, or any other package manager
+
+    - name: Run tests
+      run: |
+        python -m unittest discover  # Modify this to run your tests
