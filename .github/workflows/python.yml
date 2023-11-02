@@ -1,0 +1,29 @@
+name: Calculate Triangle Area
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  calculations:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Choose the appropriate Python version
+
+    - name: Install dependencies
+      run: pip install some-package  # Replace 'some-package' with your actual package, if needed
+
+    - name: Run Python script
+      run: python calculate_area.py  # Replace with your Python script's filename
