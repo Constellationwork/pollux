@@ -1,0 +1,22 @@
+name: Python Script
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Choose the Python version you need
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt  # Add this line if you have any dependencies in a requirements.txt file
+
+    - name: Run Python script
+      run: python your_script.py  # Replace "your_script.py" with the actual script filename
