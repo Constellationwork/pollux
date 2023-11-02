@@ -1,0 +1,12 @@
+- name: Setup Python
+  uses: actions/setup-python@v4.7.1
+  with:
+    python-version: 3.x # Specify the Python version or version range you want to use
+    python-version-file: .python-version # Specify the file containing the Python version to use if needed
+    cache: pip # Specify the package manager for caching (pip, pipenv, poetry)
+    architecture: x64 # Specify the target architecture if needed (x86, x64)
+    check-latest: false # Set to true if you want to check for the latest available version
+    token: ${{ github.token }} # Use the GitHub token for authentication
+    cache-dependency-path: # Specify the path to dependency files if needed
+    update-environment: true # Set to false if you don't want to update environment variables
+    allow-prereleases: false # Set to true if you want to match prerelease versions (for specific cases)
