@@ -1,0 +1,49 @@
+import requests
+
+# Define your Jira Cloud URL and API token
+jira_url = "https://your-jira-instance.atlassian.net"
+api_token = "your-api-token"
+
+# Define the Jira project key and version name for the release
+project_key = "PROJECTKEY"
+version_name = "1.0"  # Replace with your release version name
+
+# Define the JQL query to retrieve issues related to the release
+jql_query = f'project = {project_key} AND fixVersion = "{version_name}"'
+
+# Define the Jira REST API endpoint
+api_endpoint = f"{jira_url}/rest/api/2/search"
+
+# Set up the headers with the API token
+headers = {
+    "Authorization": f"Basic {api_token}",
+    "Content-Type": "application/json",
+}
+
+# Define the payload for the API request
+payload = {
+    "jql": jql_query,
+    "maxResults": 100,  # Adjust the number of issues you want to retrieve
+    "fields": ["summary", "description", "issuetype"],
+}
+
+# Make the API request to retrieve the issues
+response = requests.post(api_endpoint, json=payload, headers=headers)
+
+if response.status_code == 200:
+    data = response.json()
+    issues = data.get("issues", [])
+
+    for issue in issues:
+        key = issue["key"]
+        summary = issue["fields"]["summary"]
+        description = issue["fields"]["description"]
+        issuetype = issue["fields"]["issuetype"]["name"]
+
+        print(f"Key: {key}")
+        print(f"Summary: {summary}")
+        print(f"Type: {issuetype}")
+        print(f"Description: {description}\n")
+else:
+    print(f"Failed to retrieve data. Status code: {response.status_code}")
+    print(response.text)
