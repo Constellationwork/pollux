@@ -1,0 +1,21 @@
+- name: Setup Python
+  uses: actions/setup-python@v4.7.1
+  with:
+    # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
+    python-version: 3.8  # Example: '3.8' or '>=3.6,<4.0'
+    # File containing the Python version to use. Example: .python-version
+    python-version-file:  # Optional, specify if you have a version file
+    # Used to specify a package manager for caching in the default directory. Supported values: pip, pipenv, poetry.
+    cache: pip  # Example: 'pip'
+    # The target architecture (x86, x64) of the Python or PyPy interpreter.
+    architecture: x64  # Example: 'x64'
+    # Set this option if you want the action to check for the latest available version that satisfies the version spec.
+    check-latest: false  # Optional, set to 'true' if you want to check for the latest version
+    # The token used to authenticate when fetching Python distributions from https://github.com/actions/python-versions. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
+    token: ${{ github.token }}  # Optional, adjust if needed
+    # Used to specify the path to dependency files. Supports wildcards or a list of file names for caching multiple dependencies.
+    cache-dependency-path:  # Optional, specify if you have specific dependency files to cache
+    # Set this option if you want the action to update environment variables.
+    update-environment: true  # Optional, set to 'false' to prevent updating environment variables
+    # When 'true', a version range passed to 'python-version' input will match prerelease versions if no GA versions are found. Only 'x.y' version range is supported for CPython.
+    allow-prereleases: false  # Optional, set to 'true' to allow prerelease versions
